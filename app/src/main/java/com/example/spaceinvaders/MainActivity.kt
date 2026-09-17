@@ -1,5 +1,6 @@
 package com.example.spaceinvaders
 
+import android.R.attr.text
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.spaceinvaders.ui.theme.SpaceInvadersTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,6 +43,10 @@ class MainActivity : ComponentActivity() {
 //                        modifier = Modifier
 //                            .padding(innerPadding)
 //                    )
+                    GameOverScreen(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
                 }
             }
         }
@@ -157,8 +163,53 @@ fun BasicComponentScreen(modifier: Modifier = Modifier) {
 
 @Composable
 fun GameOverScreen(modifier: Modifier = Modifier) {
-    Box() {
-
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.Black),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp, 0.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            AndroidEnemy(
+                modifier = Modifier
+                    .size(70.dp),
+                color = Color.Green
+            )
+            AndroidEnemy(
+                modifier = Modifier
+                    .size(70.dp),
+                color = Color.Red
+            )
+            AndroidEnemy(
+                modifier = Modifier
+                    .size(70.dp),
+                color = Color.Blue
+            )
+            AndroidEnemy(
+                modifier = Modifier
+                    .size(70.dp),
+                color = Color.Yellow
+            )
+            AndroidEnemy(
+                modifier = Modifier
+                    .size(70.dp),
+                color = Color.Magenta
+            )
+        }
+        Text(
+            modifier = Modifier
+                .fillMaxWidth(),
+            text = "GAME OVER",
+            fontSize = 70.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
